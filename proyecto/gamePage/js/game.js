@@ -70,7 +70,15 @@ const lunchGame = {
         console.log(e)
        }  
     }
-      
+    
+    
+    // createChikote() {
+    //   this.chikote = new Chikote (this.ctx, this.canvasSize) //150, 550, 100, 100, 'mariokart.png')
+    // },
+  
+  
+
+
   },
 
   drawAll() {
@@ -81,6 +89,7 @@ const lunchGame = {
         this.drawBoard()
         // this.drawDashedLines()
         // this.drawContinuousLines()
+        //this.chikote.draw()
         this.chef.draw()
         //this.chef.move()
         // this.obstacle.drawObst() //? this.createObstacle() : null REVISAR

@@ -10,8 +10,16 @@ const lunchGame = {
     license: undefined,
     /** @type {CanvasRenderingContext2D} */
     ctx: undefined,
-    chef: undefined,
+    player: undefined,
+    obstacle1:undefined,
+    itemArr:[],
+    goodFoodArr:[],
+    badFoodArr:[],
+    goodDrinkArr:[],
+    badDrinkArr:[],
+    background:undefined,
     canvasDom: undefined,
+    frames:0,
     keys: {
         left: 'ArrowLeft',
         right: 'ArrowRight',
@@ -26,9 +34,14 @@ const lunchGame = {
         this.canvasDom = document.querySelector (`#${id}`)
         this.ctx = this.canvasDom.getContext ('2d')
         this.setDimensions()
-        this.createChef()
+        this.createPlayer()
+        this.createObstacle1()
+       // this.createItem()
         this.drawAll()
         this.setEventListeners() 
+        this.start()
+        this.createFood()
+        this.createDrinks()
     },
 
     setDimensions(){
@@ -39,66 +52,119 @@ const lunchGame = {
         }
         this.canvasDom.setAttribute ('width', this.canvasSize.w)
         this.canvasDom.setAttribute ('height', this.canvasSize.h)
-        //this.canvasDom.setAttribute ()
-
-        console.log(this.canvasDom)
     },
 
+
     drawBoard() {
-        this.ctx.fillStyle = 'white'
-        this.ctx.fillRect(0, 0, this.canvasSize.w, this.canvasSize.h)
- },
+        // this.ctx.fillStyle = 'white'
+        // this.ctx.fillRect(0, 0, this.canvasSize.w, this.canvasSize.h)
+        this.background = new Image()
+        this.background.src = 'images/cocina.jpg'
+        this.ctx.drawImage(this.background,0,0,this.canvasSize.w,this.canvasSize.h); 
+    },
  
- createChef() {
-    this.chef = new Chef (this.ctx, this.canvasSize) //150, 550, 100, 100, 'mariokart.png')
-  },
+
+    createPlayer() {
+      this.player = new Player (this.ctx, this.canvasSize) 
+    },
+
+    createObstacle1() {
+      this.obstacle1 = new Obstacle1 (this.ctx, this.canvasSize) 
+    },
+
+  //  createItem() {
+  //  this.itemArr.push(new Item (this.ctx, this.canvasSize))
+  //  },
+
+    createFood() {
+      this.goodFoodArr.push(new GoodFood (this.ctx, this.canvasSize))
+      this.badFoodArr.push(new BadFood (this.ctx, this.canvasSize))
+    },
 
 
-  setEventListeners() {
+    createDrinks() {
+      this.goodDrinkArr.push(new GoodDrink (this.ctx, this.canvasSize))
+      this.badDrinkArr.push(new BadDrink (this.ctx, this.canvasSize,this.player.speed.x))
+    },
+    
+
+
+
+    setEventListeners() {
     document.onkeydown = e => {
-        console.log(e)
 
       if (e.key === this.keys.left){
-        this.chef.move('left')
+        this.player.move('left')
       }
+
       if (e.key === this.keys.right) {
-        this.chef.move('right')
-        console.log(e)
+        this.player.move('right')
       }
+
       if (e.key === this.keys.space){ 
-        this.chef.move('space')
-        console.log(e)
+        this.player.move('space')
        }  
     }
-    
-    
-    // createChikote() {
-    //   this.chikote = new Chikote (this.ctx, this.canvasSize) //150, 550, 100, 100, 'mariokart.png')
-    // },
-  
-  
-
-
   },
 
-  drawAll() {
-    setInterval(() => {
-       // this.frames++
-        // this.frames % 70 === 0 ? this.createObstacle() : null
-        this.clearScreen()
-        this.drawBoard()
-        // this.drawDashedLines()
-        // this.drawContinuousLines()
-        //this.chikote.draw()
-        this.chef.draw()
-        //this.chef.move()
-        // this.obstacle.drawObst() //? this.createObstacle() : null REVISAR
-        // this.totalScore() //REVISAR---------------------------------------------
-    }, 70)
+
+
+drawAll() {
+  this.drawBoard()
+  this.player.draw()
+  this.obstacle1.draw()
+  //this.itemArr.forEach (elm=>{elm.draw()}) 
+  this.goodFoodArr.forEach (elm2=>{elm2.draw()}) 
+  this.badFoodArr.forEach (elm2=>{elm2.draw()}) 
+  this.goodDrinkArr.forEach (elm2=>{elm2.draw()}) 
+  this.badDrinkArr.forEach (elm2=>{elm2.draw()}) 
 },
+
+
+
+start(){
+  setInterval(() => {
+    this.clearScreen()
+    this.drawAll()
+    this.collisionDetection() 
+    this.frames++
+    //this.frames % 30 === 0 ? this.createItem() : null   
+    this.frames % 30 === 0 ? this.createFood() : null  
+    this.frames % 70 === 0 ? this.createDrinks() : null   
+}, 70)
+},
+
+
 
 clearScreen() {
     this.ctx.clearRect(0, 0, this.canvasSize.w, this.canvasSize.h)
 },
+
+
+collisionDetection(){
+  if (this.player.playerPos.x < this.obstacle1.obstacle1Pos.x + this.obstacle1.obstacle1Size.w &&
+    this.player.playerPos.x + this.player.playerSize.w > this.obstacle1.obstacle1Pos.x &&
+    this.player.playerPos.y < this.obstacle1.obstacle1Pos.y + this.obstacle1.obstacle1Size.h &&
+    this.player.playerSize.h + this.player.playerPos.y > this.obstacle1.obstacle1Pos.y){
+      //alert ("GAME OVER || recarge la pagina para continuar")
+  }
+
+
+
+  this.badDrinkArr.forEach(elm =>{
+    if (this.player.playerPos.x < elm.itemPos.x + elm.itemSize.w &&
+      this.player.playerPos.x + this.player.playerSize.w > elm.itemPos.x &&
+      this.player.playerPos.y < elm.itemPos.y + elm.itemSize.h &&
+      this.player.playerSize.h + this.player.playerPos.y > elm.itemPos.y){
+        elm.moveSlower(this.player)
+
+
+        console.log (elm)
+        console.log(this.player.speed.x)
+   }
+  }) 
+
+},
+
 }
 

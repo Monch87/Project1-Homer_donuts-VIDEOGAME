@@ -34,23 +34,18 @@ class Item{
 
 
  class GoodFood  extends Item {
-
     constructor(ctx, canvasSize) {
         super(ctx, canvasSize, 'images/car.png')
-
     }
-
 }
 
 
 
 class BadFood extends Item {
-
     constructor(ctx, canvasSize) {
         super(ctx, canvasSize, 'images/mariokart.png')
     }
 
-    
 }
 
 
@@ -61,10 +56,8 @@ class BadDrink extends Item {
         super(ctx, canvasSize, 'images/logo1.png')
     }
 
-    moveSlower(playerSpeedX){
-        console.log (playerSpeedX) 
-     playerSpeedX= 500
-    
+    moveSlower(player){
+       player.speed.x= 10
     }
 }
 
@@ -74,5 +67,7 @@ class GoodDrink extends Item {
     constructor(ctx, canvasSize) {
         super(ctx, canvasSize, 'images/logo.png')
     }
-    
+    moveNormal(player){
+        player.speed.x= 30
+     }
 }

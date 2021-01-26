@@ -40,6 +40,10 @@ class Obstacle1{
             this.speed.x *= -1
         }
 
+    restart () {
+        this.obstacle1Pos.x=0
+    }    
+
  }
 
 

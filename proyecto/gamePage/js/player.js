@@ -8,7 +8,7 @@ class Player{
              this.canvasSize = { w: canvasSize.w, h: canvasSize.h}
              this.playerSize = {w: 170, h: 170}
              this.playerPos = {x:this.canvasSize.w/2, y:this.canvasSize.h-this.playerSize.h-40}
-             this.speed = {x:20, y:0}
+             this.speed = {x:30, y:0}
              this.playerGravity = 1.4
              this.playerImageName = 'chef.jpg'            
              this.playerInstance = undefined

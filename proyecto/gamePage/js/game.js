@@ -161,6 +161,7 @@ collisionDetection(){
     this.player.playerPos.y < this.obstacle1.obstacle1Pos.y + this.obstacle1.obstacle1Size.h &&
     this.player.playerSize.h + this.player.playerPos.y > this.obstacle1.obstacle1Pos.y){
       if (this.lives<=0){
+      this.gameOver()  
       alert ("GAME OVER || recarge la pagina para continuar")
     } else {
       this.lives-- 
@@ -208,6 +209,10 @@ collisionDetection(){
          this.score>0 ? this.score-=1 : null     
    }
   })
+},
+
+gameOver() {
+  clearInterval(this.interval)
 },
 
 }

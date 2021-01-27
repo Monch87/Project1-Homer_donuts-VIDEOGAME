@@ -8,7 +8,7 @@ class Obstacle1{
         this.obstacle1Size = {w: 100, h: 100}
         this.obstacle1Pos = {x:0, y:this.canvasSize.h-this.obstacle1Size.h-40}
         this.speed = {x:15, y: 0}
-        this.obstacle1ImageName = 'flappy.png'
+        this.obstacle1ImageName = 'animals.svg'
         this.obstacle1Instance = undefined
         this.init()
     }
@@ -17,7 +17,7 @@ class Obstacle1{
 
     init() {
         this.obstacle1Instance = new Image()
-        this.obstacle1Instance.src = 'images/flappy.png'
+        this.obstacle1Instance.src = 'images/animals.svg'
 
     }
 
@@ -31,7 +31,7 @@ class Obstacle1{
 
     move() {
             this.obstacle1Pos.x += this.speed.x
-            if (this.obstacle1Pos.x >= this.canvasSize.w - this.obstacle1Size.w || this.obstacle1Pos.x<=0) {
+            if (this.obstacle1Pos.x >= this.canvasSize.w - this.obstacle1Size.w || this.obstacle1Pos.x<0) {
                 this.changeSpeed()
             }
         }
@@ -41,7 +41,7 @@ class Obstacle1{
         }
 
     restart () {
-        this.obstacle1Pos.x=0
+        this.obstacle1Pos.x=1
     }    
 
  }

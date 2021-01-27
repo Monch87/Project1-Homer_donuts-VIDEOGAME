@@ -6,11 +6,11 @@ class Player{
              this.ctx = ctx
 
              this.canvasSize = { w: canvasSize.w, h: canvasSize.h}
-             this.playerSize = {w: 170, h: 170}
+             this.playerSize = {w: 300, h: 300}
              this.playerPos = {x:this.canvasSize.w/2, y:this.canvasSize.h-this.playerSize.h-40}
              this.speed = {x:30, y:0}
-             this.playerGravity = 1.4
-             this.playerImageName = 'chef.jpg'            
+             this.playerGravity = 2
+             this.playerImageName = 'chef.png'            
              this.playerInstance = undefined
              this.init()
          }
@@ -19,7 +19,7 @@ class Player{
 
          init() {
              this.playerInstance = new Image()
-             this.playerInstance.src =  'images/chef.jpg' 
+             this.playerInstance.src =  'images/chef.png' 
              this.draw()
          }
 

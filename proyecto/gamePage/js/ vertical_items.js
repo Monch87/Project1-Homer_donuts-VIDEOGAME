@@ -5,7 +5,7 @@ class Item{
     constructor(ctx, canvasSize, imageSource) {
         this.ctx = ctx
         this.canvasSize = {w: canvasSize.w, h: canvasSize.h}
-        this.itemSize = {w: 50, h: 50}
+        this.itemSize = {w: 70, h: 70}
         this.itemPos = {x: Math.floor(Math.random() * ((this.canvasSize.w-this.itemSize.w) - 50) -50), y:0}
         this.speed = {x:0, y: 15}
         this.imageSource = imageSource
@@ -35,7 +35,7 @@ class Item{
 
  class GoodFood  extends Item {
     constructor(ctx, canvasSize) {
-        super(ctx, canvasSize, 'images/car.png')
+        super(ctx, canvasSize, 'images/vegetables.svg')
     }
 }
 
@@ -43,7 +43,7 @@ class Item{
 
 class BadFood extends Item {
     constructor(ctx, canvasSize) {
-        super(ctx, canvasSize, 'images/mariokart.png')
+        super(ctx, canvasSize, 'images/burger.svg')
     }
 
 }
@@ -53,7 +53,7 @@ class BadFood extends Item {
 class BadDrink extends Item {
 
     constructor(ctx, canvasSize) {
-        super(ctx, canvasSize, 'images/logo1.png')
+        super(ctx, canvasSize, 'images/beer.svg')
     }
 
     moveSlower(player){
@@ -65,7 +65,7 @@ class BadDrink extends Item {
 class GoodDrink extends Item {
 
     constructor(ctx, canvasSize) {
-        super(ctx, canvasSize, 'images/logo.png')
+        super(ctx, canvasSize, 'images/coffee-cup.svg')
     }
     moveNormal(player){
         player.speed.x= 30

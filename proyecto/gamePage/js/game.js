@@ -136,14 +136,17 @@ start(){
 },
 
 
-//// REVISAR////
+
 clearAll() {
-  this.goodFoodArr= this.goodFoodArr.filter(elm => elm.itemPos.x > -elm.itemSize.w)
-  this.badFoodArr= this.badFoodArr.filter(elm => elm.itemPos.x > -elm.itemSize.w)
-  this.goodDrinkArr= this.goodDrinkArr.filter(elm => elm.itemPos.x > -elm.itemSize.w)
-  this.badDrinkArr= this.badDrinkArr.filter(elm => elm.itemPos.x > -elm.itemSize.w)
+  this.goodFoodArr= this.goodFoodArr.filter(elm => elm.itemPos.y < this.canvasSize.h)
+  this.badFoodArr= this.badFoodArr.filter(elm => elm.itemPos.y < this.canvasSize.h)
+  this.goodDrinkArr= this.goodDrinkArr.filter(elm => elm.itemPos.y < this.canvasSize.h)
+  this.badDrinkArr= this.badDrinkArr.filter(elm => elm.itemPos.y < this.canvasSize.h)
   
   console.log(this.goodFoodArr.length)
+  console.log(this.badFoodArr.length)
+  console.log(this.goodDrinkArr.length)
+  console.log(this.badDrinkArr.length)
 },
 
 

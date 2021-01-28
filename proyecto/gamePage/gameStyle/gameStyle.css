@@ -1,15 +1,73 @@
  body {
    padding: 0;
    text-align: center;
-   background-color:rgba(236, 207, 79, 0.924);
+   background-color:rgb(253, 212, 34);
 }
   
+ul li {
+list-style: none;
+padding:50px 0px;
+display: flex;
+align-items: center;
+}
+
+ul b {
+font-size:4em;
+}
 
 
-
-
+ ul li img {
+width: 50px;
+margin-right: 35px;
+}
 
 #game-intro {
-   float: left;
+   float: right;
    padding: 20px 20px;
 }
+
+
+#score {
+  /* background-image: url(../images/tv.png); 
+   background-repeat: no-repeat;
+   background-color: #376faa; */
+   border: 5px solid white;
+   font-size: 40px;
+   color: white;
+   font-family: Arial;
+   width: 150px;
+   height: 150px;
+   padding: 10px 30px 70px 30px; 
+   margin-top: 200px;
+   margin-bottom: 100px;
+   /* border-radius: 15px; */
+ }
+
+.main{
+   display:flex;
+   justify-content: space-evenly;
+   margin-top: 30px;
+} 
+
+
+.left-column{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+
+.duff {
+height: 70px;
+width: 30px;
+}
+
+.beer {
+height: 70px;
+width: 30px;
+}
+
+
+/* #audio{
+display: none
+} */

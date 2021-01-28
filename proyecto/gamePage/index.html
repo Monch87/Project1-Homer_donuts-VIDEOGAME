@@ -7,9 +7,36 @@
     <title>Lunch Time</title>
 </head>
 <body>
-    <div class="game-intro">
-        <canvas id="foodGame"></canvas>
-    </div>
+    <section class='main'>
+        <div class='left-column'> 
+        <div id="score"> 
+            <p>Score: <span id="scorepoints">0</span></p>
+            <p>Lives: <span id="lives">0</span></p>
+        </div>
+        <ul>
+            <b>Take it!</b>
+            <li>
+                <img class="donut" src="images/donut-cream.png" alt="donut" />
+                <img class="donut2" src="images/donut-rose.png" alt="donut2" />
+                <img class="donut3" src="images/donut.svg" alt="donut3"/>
+                <img class="duff" src="images/canduff.png" alt="duff"/>
+                <img class="beer" src="images/beer.png" alt="beer" />
+            </li> 
+            <b>Don't take it!</b>
+            <li>
+                <img class="brocoli" src="images/brocoli.svg" alt="brocoli"/>
+                <img class="cabbage" src="images/cabbage.svg" alt="cabbage" />
+                <img class="carrot" src="images/carrot.svg" alt="carrot"/>
+                <img class="coffee" src="images/coffee-cup.svg" alt="coffee"/>
+            </li>
+        </ul>
+        <audio controls id="audio" src="./simpsonsintro.mp3" autoplay="true">
+        </audio>
+        </div>
+        <div class="game-intro">
+            <canvas id="foodGame"></canvas>
+        </div>
+    </section>
     <script type="text/javascript" src="js/player.js"></script>
     <script type="text/javascript" src="js/horizontal_obstacle1.js"></script>
     <script type="text/javascript" src="js/ vertical_items.js"></script>

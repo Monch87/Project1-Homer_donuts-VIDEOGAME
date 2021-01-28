@@ -1,94 +1,102 @@
 const lunchGame = {
-    // un chef tiene que dar una comida clandestina para 20 comensales,
-    //  tendra que preparar 5 platos para cada comensal, 
-    // tendra que tener cuidado con la bedida y la comida fast food, 
-    // ademas de esquivar a chikote que le quiere chapar el garito.
-    name: 'Covid Lunchtime',
-    description: 'Canvas App for lunch prep',
-    author: 'Montserrat Mosqueda, Carlos Prado',
-    version: '1.0.0',
-    license: undefined,
-    /** @type {CanvasRenderingContext2D} */
-    ctx: undefined,
-    player: undefined,
-    obstacle1:undefined,
-    itemArr:[],
-    goodFoodArr:[],
-    badFoodArr:[],
-    goodDrinkArr:[],
-    badDrinkArr:[],
-    score:0,
-    lives:3,
-    background:undefined,
-    canvasDom: undefined,
-    frames:0,
-    keys: {
-        left: 'ArrowLeft',
-        right: 'ArrowRight',
-        space: ' '
-      },
-    canvasSize: {
-        w: undefined,
-        h: undefined
-      },
+  name: 'Covid Lunchtime',
+  description: 'Canvas App for lunch prep',
+  author: 'Montserrat Mosqueda, Carlos Prado',
+  version: '1.0.0',
+  license: undefined,
+  /** @type {CanvasRenderingContext2D} */
+  ctx: undefined,
+  player: undefined,
+  obstacles1: [],
+  itemsArrs: {
+    goodFoodArr: [],
+    badFoodArr: [],
+    goodDrinkArr: [],
+    badDrinkArr: [],
+  },
+  score: 0,
+  lives: 3,
+  background: [],
+  canvasDom: undefined,
+  frames: 0,
+  keys: {
+    left: 'ArrowLeft',
+    right: 'ArrowRight',
+    space: ' '
+  },
+  canvasSize: {
+    w: undefined,
+    h: undefined
+  },
 
-    init(id){
-        this.canvasDom = document.querySelector (`#${id}`)
-        this.ctx = this.canvasDom.getContext ('2d')
-        this.setDimensions()
-        this.createPlayer()
-        this.createObstacle1()
-        this.drawAll()
-        this.setEventListeners() 
-        this.start()
-        this.createFood()
-        this.createDrinks()
-    },
+  init(id) {
+    this.canvasDom = document.querySelector(`#${id}`)
+    this.ctx = this.canvasDom.getContext('2d')
+    this.setDimensions()
+    this.createPlayer()
+    this.createObstacle1()
+    this.drawAll()
+    this.setEventListeners()
+    this.start()
+    this.createFood()
+    this.createDrinks()
+    this.playSound()
+  },
 
-    setDimensions(){
-        this.canvasSize = {
-            w: window.innerWidth-600,
-            h: window.innerHeight,
-            PosX:200
-        }
-        this.canvasDom.setAttribute ('width', this.canvasSize.w)
-        this.canvasDom.setAttribute ('height', this.canvasSize.h)
-    },
+  setDimensions() {
+    this.canvasSize = {
+      w: window.innerWidth - 600,
+      h: window.innerHeight - 70,
+      PosX: 200
+    }
 
-
-    drawBoard() {
-        // this.ctx.fillStyle = 'white'
-        // this.ctx.fillRect(0, 0, this.canvasSize.w, this.canvasSize.h)
-        this.background = new Image()
-        this.background.src = 'images/cocina.jpg'
-        this.ctx.drawImage(this.background,0,0,this.canvasSize.w,this.canvasSize.h); 
-    },
- 
-
-    createPlayer() {
-      this.player = new Player (this.ctx, this.canvasSize) 
-    },
-
-    createObstacle1() {
-      this.obstacle1 = new Obstacle1 (this.ctx, this.canvasSize) 
-    },
-
-    createFood() {
-      this.goodFoodArr.push(new GoodFood (this.ctx, this.canvasSize))
-      this.badFoodArr.push(new BadFood (this.ctx, this.canvasSize))
-    },
-
-    createDrinks() {
-      this.goodDrinkArr.push(new GoodDrink (this.ctx, this.canvasSize))
-      this.badDrinkArr.push(new BadDrink (this.ctx, this.canvasSize,this.player.speed.x))
-    },
-    
+    this.canvasDom.setAttribute('width', this.canvasSize.w)
+    this.canvasDom.setAttribute('height', this.canvasSize.h)
+  },
 
 
-    setEventListeners() {
+  drawBoard() {
+    this.background = new Image()
+    this.background.src = ('images/thesimpsons.png') 
+    this.ctx.drawImage(this.background,0, 0, this.canvasSize.w, this.canvasSize.h);
+  },
+
+  drawBoardGameOver() {
+   // this.background = new Image()
+   // this.background.src = ('images/gameover.png')
+   // this.ctx.drawImage(this.background, 0, 0, this.canvasSize.w, this.canvasSize.h);
+  },
+  drawBoardWin() {
+   // this.background = new Image()
+  //  this.background.src = ('images/win.jpg') 
+  //  this.ctx.drawImage(this.background, 0, 0, this.canvasSize.w, this.canvasSize.h);
+  },
+
+
+  createPlayer() {
+    this.player = new Player(this.ctx, this.canvasSize)
+  },
+
+  createObstacle1() {
+    this.obstacles1.push(new Obstacle1(this.ctx, this.canvasSize))
+  },
+
+  createFood() {
+    this.itemsArrs.goodFoodArr.push(new GoodFood(this.ctx, this.canvasSize))
+    this.itemsArrs.badFoodArr.push(new BadFood(this.ctx, this.canvasSize))
+  },
+
+  createDrinks() {
+    this.itemsArrs.goodDrinkArr.push(new GoodDrink(this.ctx, this.canvasSize))
+    this.itemsArrs.badDrinkArr.push(new BadDrink(this.ctx, this.canvasSize, this.player.speed.x))
+  },
+
+
+
+  setEventListeners() {
     document.onkeydown = e => {
 
-      if (e.key === this.keys.left){
+      if (e.key === this.keys.left) {
         this.player.move('left')
       }
 
@@ -96,124 +104,137 @@ const lunchGame = {
         this.player.move('right')
       }
 
-      if (e.key === this.keys.space){ 
+      if (e.key === this.keys.space) {
         this.player.move('space')
-       }  
+      }
     }
   },
 
 
-drawAll() {
-  this.drawBoard()
-  this.drawScore()
-  this.player.draw()
-  this.obstacle1.draw()
-  this.goodFoodArr.forEach (elm2=>{elm2.draw()}) 
-  this.badFoodArr.forEach (elm2=>{elm2.draw()}) 
-  this.goodDrinkArr.forEach (elm2=>{elm2.draw()}) 
-  this.badDrinkArr.forEach (elm2=>{elm2.draw()})
-},
-
-drawScore(){
-  //-----preguntar a TEO SCORE FUERA DE CANVAS
-  this.ctx.font = "40px Arial"
-  this.ctx.fillStyle = "black" 
-  this.ctx.fillText("Score: " + this.score + "Lives: " + this.lives, 100, 70)
-  //this.ctx.fillText("Lives: " + this.lives, 100, 70)
-},
-
-
-start(){
-  setInterval(() => {
-    this.clearScreen()
-    this.drawAll()
-    this.clearAll()
-    this.collisionDetection() 
-    this.frames++  
-    this.frames % 30 === 0 ? this.createFood() : null  
-    this.frames % 70 === 0 ? this.createDrinks() : null   
-}, 70)
-},
+  drawAll() {
+    this.drawBoard()
+    this.drawScore()
+    this.player.draw()
+    this.obstacles1.forEach(elm => elm.draw())  
+    Object.values(this.itemsArrs).flat().forEach(elm => elm.draw())
+  },
 
 
 
-clearAll() {
-  this.goodFoodArr= this.goodFoodArr.filter(elm => elm.itemPos.y < this.canvasSize.h)
-  this.badFoodArr= this.badFoodArr.filter(elm => elm.itemPos.y < this.canvasSize.h)
-  this.goodDrinkArr= this.goodDrinkArr.filter(elm => elm.itemPos.y < this.canvasSize.h)
-  this.badDrinkArr= this.badDrinkArr.filter(elm => elm.itemPos.y < this.canvasSize.h)
-  
-  console.log(this.goodFoodArr.length)
-  console.log(this.badFoodArr.length)
-  console.log(this.goodDrinkArr.length)
-  console.log(this.badDrinkArr.length)
-},
+
+  drawScore() {
+    let domFood = document.querySelector("#scorepoints")
+    domFood.innerText = this.score
+    let domLives = document.querySelector("#lives")
+    domLives.innerText = this.lives
+  },
 
 
-clearScreen() {
+  start() {
+    this.interval=setInterval(() => {
+      this.clearScreen()
+      this.drawAll()
+      this.clearAll()
+      this.collisionDetection()
+      this.frames++
+      this.frames % 30 === 0 ? this.createFood() : null
+      this.frames % 200 === 0 ? this.createDrinks() : null
+      this.frames % 200 === 0 ? this.createObstacle1() : null
+    }, 70)
+  },
+
+   playSound(){
+    let audio = document.getElementById("audio")
+    console.log(audio)
+    audio.play()
+
+   },
+
+
+  clearAll() {
+    Object.values(this.itemsArrs).forEach(elm => elm = elm.filter(elm => elm.itemPos.y < this.canvasSize.h))
+  },
+
+
+
+  clearScreen() {
     this.ctx.clearRect(0, 0, this.canvasSize.w, this.canvasSize.h)
-},
+  },
+
+  addScore() {
+    this.score += 1
+  },
 
 
-collisionDetection(){
-  if (this.player.playerPos.x < this.obstacle1.obstacle1Pos.x + this.obstacle1.obstacle1Size.w &&
-    this.player.playerPos.x + this.player.playerSize.w > this.obstacle1.obstacle1Pos.x &&
-    this.player.playerPos.y < this.obstacle1.obstacle1Pos.y + this.obstacle1.obstacle1Size.h &&
-    this.player.playerSize.h + this.player.playerPos.y > this.obstacle1.obstacle1Pos.y){
-      if (this.lives<=0){
-      this.gameOver()  
-      alert ("GAME OVER || recarge la pagina para continuar")
-    } else {
-      this.lives-- 
-      this.obstacle1.restart()
-    }
-  }
+  collisionDetection() {
+    this.obstacles1.forEach((elm, i) => {
+      if (this.player.playerPos.x < elm.obstacle1Pos.x + elm.obstacle1Size.w &&
+        this.player.playerPos.x + this.player.playerSize.w > elm.obstacle1Pos.x &&
+        this.player.playerPos.y < elm.obstacle1Pos.y + elm.obstacle1Size.h &&
+        this.player.playerSize.h + this.player.playerPos.y > elm.obstacle1Pos.y) {
+      if (this.lives <= 0) {
+        this.clearScreen()
+        this.drawBoardGameOver()  
+        this.gameOver()
+      } else {
+        this.lives--
+        this.obstacles1.splice(i, 1)
+      }
+     }
+    })
 
-  this.badDrinkArr.forEach((elm, i)=>{
-    if (this.player.playerPos.x < elm.itemPos.x + elm.itemSize.w &&
-      this.player.playerPos.x + this.player.playerSize.w > elm.itemPos.x &&
-      this.player.playerPos.y < elm.itemPos.y + elm.itemSize.h &&
-      this.player.playerSize.h + this.player.playerPos.y > elm.itemPos.y){
+    this.itemsArrs.badDrinkArr.forEach((elm, i) => {
+      if (this.player.playerPos.x < elm.itemPos.x + elm.itemSize.w &&
+        this.player.playerPos.x + this.player.playerSize.w > elm.itemPos.x &&
+        this.player.playerPos.y < elm.itemPos.y + elm.itemSize.h &&
+        this.player.playerSize.h + this.player.playerPos.y > elm.itemPos.y) {
         elm.moveSlower(this.player)
-        this.badDrinkArr.splice(i,1)  
-   }
-  }) 
+        this.itemsArrs.badDrinkArr.splice(i, 1)
+      }
+    })
 
-  this.goodDrinkArr.forEach((elm, i) =>{
-    if (this.player.playerPos.x < elm.itemPos.x + elm.itemSize.w &&
-      this.player.playerPos.x + this.player.playerSize.w > elm.itemPos.x &&
-      this.player.playerPos.y < elm.itemPos.y + elm.itemSize.h &&
-      this.player.playerSize.h + this.player.playerPos.y > elm.itemPos.y){
+    this.itemsArrs.goodDrinkArr.forEach((elm, i) => {
+      if (this.player.playerPos.x < elm.itemPos.x + elm.itemSize.w &&
+        this.player.playerPos.x + this.player.playerSize.w > elm.itemPos.x &&
+        this.player.playerPos.y < elm.itemPos.y + elm.itemSize.h &&
+        this.player.playerSize.h + this.player.playerPos.y > elm.itemPos.y) {
         elm.moveNormal(this.player)
-        this.goodDrinkArr.splice(i,1)  
-   }
-  })
+        this.itemsArrs.goodDrinkArr.splice(i, 1)
+      }
+    })
 
-  this.goodFoodArr.forEach((elm, i) =>{
-    if (this.player.playerPos.x < elm.itemPos.x + elm.itemSize.w &&
-      this.player.playerPos.x + this.player.playerSize.w > elm.itemPos.x &&
-      this.player.playerPos.y < elm.itemPos.y + elm.itemSize.h &&
-      this.player.playerSize.h + this.player.playerPos.y > elm.itemPos.y){
-        this.goodFoodArr.splice(i,1)   
-        this.score+=1
-        this.score>=20 ? alert ('ENHORABUENA!!! HAS GANADO!!!'): null
-   }
-  }) 
+    this.itemsArrs.goodFoodArr.forEach((elm, i) => {
+      if (this.player.playerPos.x < elm.itemPos.x + elm.itemSize.w &&
+        this.player.playerPos.x + this.player.playerSize.w > elm.itemPos.x &&
+        this.player.playerPos.y < elm.itemPos.y + elm.itemSize.h &&
+        this.player.playerSize.h + this.player.playerPos.y > elm.itemPos.y) {
+        this.itemsArrs.goodFoodArr.splice(i, 1)
+        this.addScore()
+        if (this.score >= 10) {
+          this.clearScreen()
+          this.drawBoardWin()
+          this.gameOver()
+        }
+      }
+    })
 
-  this.badFoodArr.forEach((elm, i) =>{
-    if (this.player.playerPos.x < elm.itemPos.x + elm.itemSize.w &&
-      this.player.playerPos.x + this.player.playerSize.w > elm.itemPos.x &&
-      this.player.playerPos.y < elm.itemPos.y + elm.itemSize.h &&
-      this.player.playerSize.h + this.player.playerPos.y > elm.itemPos.y){
-         this.badFoodArr.splice(i,1)   
-         this.score>0 ? this.score-=1 : null     
-   }
-  })
-},
+    this.itemsArrs.badFoodArr.forEach((elm, i) => {
+      if (this.player.playerPos.x < elm.itemPos.x + elm.itemSize.w &&
+        this.player.playerPos.x + this.player.playerSize.w > elm.itemPos.x &&
+        this.player.playerPos.y < elm.itemPos.y + elm.itemSize.h &&
+        this.player.playerSize.h + this.player.playerPos.y > elm.itemPos.y) {
+        this.itemsArrs.badFoodArr.splice(i, 1)
+        this.score > 0 ? this.score -= 1 : null
+      }
+    })
+  },
 
-gameOver() {
-  clearInterval(this.interval)
-},
+  gameOver() {
+    clearInterval(this.interval)
+    // this.ctx.font="50px Avenir"
+    // this.ctx.fillStyle="white"
+    // this.ctx.fillStyle('GAME OVER',100,100)
+  },
 
 }
 

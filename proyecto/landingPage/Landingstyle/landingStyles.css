@@ -1,0 +1,78 @@
+body {   
+/*font: 200 16px/1.5 "Simpson";*/
+background-image:url(../images/backgroundhomer.png);
+background-repeat: no-repeat;
+background-size: cover;
+height:100vh;
+}
+
+
+header {
+display:flex;
+flex-direction: column;
+align-items: center;
+padding: 80px 200px 0px 500px;
+margin-left: 100px;
+}
+
+header h1{
+ font-size: 8em;
+ margin: 10px 0;
+}
+
+header p {
+font-size: 2em;
+text-align: center;
+width: 920px;  
+margin-left: 50px; 
+}
+
+ul li{
+display:flex;
+list-style: none;
+font-size: 1.5em;
+padding-bottom: 20px;
+align-items: center;
+}
+
+ul li img {
+width: 50px;
+margin-right: 35px;
+}
+
+ul li b{
+margin: 0px 5px;
+}
+
+.arrowrigth .arrowleft{
+height: 30px;
+width: 180px;
+}
+
+.space img{
+height: 30px;
+width: 135px;
+}
+
+
+.duff {
+height: 60px;
+width: 40px;
+margin-right: 55px;
+}
+
+.button{
+    border: 5px solid black;
+    border-radius: 15px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 2em;
+    letter-spacing: 6px;
+    padding: 15px;
+    display: block;
+    text-align: center;
+    width: 30%;
+    margin-bottom: 10px;
+    background-color: rgb(26, 75, 167);
+    color:white;
+}

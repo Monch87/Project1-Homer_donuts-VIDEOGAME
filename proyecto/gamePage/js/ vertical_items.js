@@ -1,11 +1,9 @@
 class Item{
-    // la comida sale desde arriba desplazandose en el eje Y, 
-    // habra 5 platos distintos, y tendra que cocinar 20 de cada.
 
     constructor(ctx, canvasSize, imageSource) {
         this.ctx = ctx
         this.canvasSize = {w: canvasSize.w, h: canvasSize.h}
-        this.itemSize = {w: 70, h: 70}
+        this.itemSize = {w: 100, h: 100}
         this.itemPos = {x: Math.floor(Math.random() * ((this.canvasSize.w-this.itemSize.w) - 50) -50), y:0}
         this.speed = {x:0, y: 15}
         this.imageSource = imageSource
@@ -19,7 +17,6 @@ class Item{
         this.itemInstance.src = this.imageSource
     }
 
-
     draw() {
         this.ctx.drawImage(this.itemInstance, this.itemPos.x, this.itemPos.y, this.itemSize.w, this.itemSize.h)
         this.move() 
@@ -31,19 +28,18 @@ class Item{
  }
 
 
-
-
  class GoodFood  extends Item {
     constructor(ctx, canvasSize) {
-        super(ctx, canvasSize, 'images/vegetables.svg')
+        let imageGoodFood = ['images/donut-rose.png','images/donut-cream.png','images/donut.svg']
+        super(ctx, canvasSize,imageGoodFood[Math.floor(imageGoodFood.length * Math.random())])
     }
 }
 
 
-
 class BadFood extends Item {
     constructor(ctx, canvasSize) {
-        super(ctx, canvasSize, 'images/burger.svg')
+        let imageBadFood=['images/brocoli.svg','images/carrot.svg','images/cabbage.svg']
+        super(ctx, canvasSize, imageBadFood[Math.floor(imageBadFood.length* Math.random())])
     }
 
 }
@@ -53,7 +49,7 @@ class BadFood extends Item {
 class BadDrink extends Item {
 
     constructor(ctx, canvasSize) {
-        super(ctx, canvasSize, 'images/beer.svg')
+        super(ctx, canvasSize, 'images/coffee-cup.svg')
     }
 
     moveSlower(player){
@@ -64,8 +60,14 @@ class BadDrink extends Item {
 
 class GoodDrink extends Item {
 
-    constructor(ctx, canvasSize) {
-        super(ctx, canvasSize, 'images/coffee-cup.svg')
+    constructor(ctx, canvasSize,itemSize) {
+        let imagedrinks = ['images/beer.png', 'images/canduff.png']
+        super(ctx, canvasSize, imagedrinks[Math.floor(imagedrinks.length * Math.random())])
+        this.itemSize = itemSize
+        this.itemSize = {w: 60, h: 130}
+
+
+
     }
     moveNormal(player){
         player.speed.x= 30

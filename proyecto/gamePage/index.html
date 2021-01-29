@@ -8,10 +8,13 @@
 </head>
 <body>
     <section class='main'>
-        <div class='left-column'> 
-        <div id="score"> 
-            <p>Score: <span id="scorepoints">0</span></p>
-            <p>Lives: <span id="lives">0</span></p>
+        <div>
+        <div id="tvscore"> 
+            <img class="tv" src="images/tv.png" /></img>
+            <div id="score">
+             <p>Score: <span id="scorepoints">0</span></p>
+             <p>Lives: <span id="lives">0</span></p>
+            </div>
         </div>
         <ul>
             <b>Take it!</b>
@@ -30,8 +33,7 @@
                 <img class="coffee" src="images/coffee-cup.svg" alt="coffee"/>
             </li>
         </ul>
-        <audio controls id="audio" src="./simpsonsintro.mp3" autoplay="true">
-        </audio>
+        <audio controls id="audio" src="./simpsonsintro.mp3"></audio>
         </div>
         <div class="game-intro">
             <canvas id="foodGame"></canvas>

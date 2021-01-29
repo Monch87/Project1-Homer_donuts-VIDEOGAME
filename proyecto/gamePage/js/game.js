@@ -62,12 +62,13 @@ const lunchGame = {
   },
 
   drawBoardGameOver() {
-   // this.background = new Image()
-   // this.background.src = ('images/gameover.png')
-   // this.ctx.drawImage(this.background, 0, 0, this.canvasSize.w, this.canvasSize.h);
+    //  this.background = new Image()
+    //  this.background.src = ('images/gameover.png')
+    //  this.ctx.drawImage(this.background, 0, 0, this.canvasSize.w, this.canvasSize.h)
   },
+
   drawBoardWin() {
-   // this.background = new Image()
+  //  this.background = new Image()
   //  this.background.src = ('images/win.jpg') 
   //  this.ctx.drawImage(this.background, 0, 0, this.canvasSize.w, this.canvasSize.h);
   },
@@ -147,7 +148,6 @@ const lunchGame = {
     let audio = document.getElementById("audio")
     console.log(audio)
     audio.play()
-
    },
 
 
@@ -231,9 +231,6 @@ const lunchGame = {
 
   gameOver() {
     clearInterval(this.interval)
-    // this.ctx.font="50px Avenir"
-    // this.ctx.fillStyle="white"
-    // this.ctx.fillStyle('GAME OVER',100,100)
   },
 
 }

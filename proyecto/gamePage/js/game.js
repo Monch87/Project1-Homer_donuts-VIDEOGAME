@@ -16,7 +16,9 @@ const lunchGame = {
   },
   score: 0,
   lives: 3,
-  background: [],
+  background:undefined,
+  background2: undefined,
+  background3:undefined,
   canvasDom: undefined,
   frames: 0,
   keys: {
@@ -62,15 +64,15 @@ const lunchGame = {
   },
 
   drawBoardGameOver() {
-    //  this.background = new Image()
-    //  this.background.src = ('images/gameover.png')
-    //  this.ctx.drawImage(this.background, 0, 0, this.canvasSize.w, this.canvasSize.h)
+     this.background2 = new Image()
+     this.background2.src = ('images/gameover.png')
+     this.background2.onload = () => this.ctx.drawImage(this.background2, 0, 0, this.canvasSize.w, this.canvasSize.h)
   },
 
   drawBoardWin() {
-  //  this.background = new Image()
-  //  this.background.src = ('images/win.jpg') 
-  //  this.ctx.drawImage(this.background, 0, 0, this.canvasSize.w, this.canvasSize.h);
+   this.background3 = new Image()
+    this.background3.src = ('images/homerowin.png') 
+   this.background3.onload = () =>this.ctx.drawImage(this.background3, 0, 0, this.canvasSize.w, this.canvasSize.h);
   },
 
 
@@ -140,7 +142,7 @@ const lunchGame = {
       this.frames++
       this.frames % 30 === 0 ? this.createFood() : null
       this.frames % 200 === 0 ? this.createDrinks() : null
-      this.frames % 200 === 0 ? this.createObstacle1() : null
+      this.frames % 20 === 0 ? this.createObstacle1() : null
     }, 70)
   },
 

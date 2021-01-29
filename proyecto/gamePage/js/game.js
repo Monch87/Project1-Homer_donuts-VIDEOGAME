@@ -142,7 +142,7 @@ const lunchGame = {
       this.frames++
       this.frames % 30 === 0 ? this.createFood() : null
       this.frames % 200 === 0 ? this.createDrinks() : null
-      this.frames % 20 === 0 ? this.createObstacle1() : null
+      this.frames % 150 === 0 ? this.createObstacle1() : null
     }, 70)
   },
 

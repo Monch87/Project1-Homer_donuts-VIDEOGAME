@@ -26,10 +26,11 @@ Help him collect 10 donuts to take with him on the road. eye! It won't be easy .
 
  1. Access to the next URL in order to start the videogame: https://monch87.github.io/Project1-Homer_donuts-VIDEOGAME/
 
-![homer1](https://user-images.githubusercontent.com/72262776/116545293-814f3000-a8f0-11eb-8b3f-f88c440d24cd.png)
-![homer2png](https://user-images.githubusercontent.com/72262776/116545298-81e7c680-a8f0-11eb-879c-248b21974818.png)
-![homer3 png](https://user-images.githubusercontent.com/72262776/116545299-82805d00-a8f0-11eb-8f06-425398c8074d.png)
-![homer4 png](https://user-images.githubusercontent.com/72262776/116545302-82805d00-a8f0-11eb-81c6-f4f4a8856791.png)
+![homer1_opt](https://user-images.githubusercontent.com/72262776/116545832-308c0700-a8f1-11eb-980b-cb011e406bb5.png)
+![homer2png_opt](https://user-images.githubusercontent.com/72262776/116545835-31249d80-a8f1-11eb-8d7b-2721e0faedd2.png)
+![homer3_opt](https://user-images.githubusercontent.com/72262776/116545838-31249d80-a8f1-11eb-8f01-552e31c5b7b9.png)
+![homer4_opt](https://user-images.githubusercontent.com/72262776/116545839-31bd3400-a8f1-11eb-86b2-c84a9556c964.png)
+
 
 
   ### Used technologies 

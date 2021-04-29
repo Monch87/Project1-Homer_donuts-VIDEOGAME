@@ -7,7 +7,7 @@
 by: Montserrat Mosqueda & Carlos Prado
 
 
-## Description :house:
+## Description 
 Homer is late to the nuclear power plant and does not have time for breakfast. 
 Help him collect 10 donuts to take with him on the road. eye! It won't be easy ... You will have to dodge the different obstacles.
 

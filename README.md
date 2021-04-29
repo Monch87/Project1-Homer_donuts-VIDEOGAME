@@ -3,7 +3,7 @@
 
 ## LUNCH GAME! :yellow_square: :doughnut:
 "Videogame Project"
-by: Montserrat Mosqueda & Carlos Prado (https://github.com/ceprado93)
+by: Montserrat Mosqueda & Carlos Prado
 
 
 ## Description :house:

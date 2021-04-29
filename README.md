@@ -2,7 +2,7 @@
 
 
 ## LUNCH GAME! :yellow_square: :doughnut:
-"Videogame Project"
+<b> "Videogame Project" </b>
 
 by: Montserrat Mosqueda & Carlos Prado
 

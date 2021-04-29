@@ -35,6 +35,7 @@ Help him collect 10 donuts to take with him on the road. But be careful! It won'
   2. Use <b> left arrow </b> or <b> right arrow </b> to scroll the board.
   3. Avoid picking vegetables or donuts will be subtracted.
   4. Dodge the coffee or they'll make you go slow. But do not worry! Just have a beer to get back at its normal speed.
+  <b> BONUS: </b> Dodge the different obstacles (BART, MAGGY & ITCHY) or lives will be subtracted.
 
 ![homer1_opt](https://user-images.githubusercontent.com/72262776/116545832-308c0700-a8f1-11eb-980b-cb011e406bb5.png) ![homer2png_opt](https://user-images.githubusercontent.com/72262776/116545835-31249d80-a8f1-11eb-8d7b-2721e0faedd2.png)
 

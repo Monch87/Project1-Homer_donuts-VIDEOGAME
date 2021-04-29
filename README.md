@@ -6,7 +6,7 @@
 by: Montserrat Mosqueda & Carlos Prado (https://github.com/ceprado93)
 
 
-## Description :house: :bicyclist: :tropical_drink:
+## Description :house:
 Homer is late to the nuclear power plant and does not have time for breakfast. 
 Help him collect 10 donuts to take with him on the road. eye! It won't be easy ... You will have to dodge the different obstacles.
 

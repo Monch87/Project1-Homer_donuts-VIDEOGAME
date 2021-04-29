@@ -27,6 +27,15 @@ Help him collect 10 donuts to take with him on the road. But be careful! It won'
 
  1. Access to the next URL in order to start the videogame: https://monch87.github.io/Project1-Homer_donuts-VIDEOGAME/
 
+
+
+  ### VIDEOGAME Instructions
+  
+  1. <b> Objective: </b> collect 10 donuts to finish the game.
+  2. Use <b> left arrow </b> or <b> right arrow </b> to scroll the board.
+  3. Avoid picking vegetables or donuts will be subtracted.
+  4. Dodge the coffee or they'll make you go slow. But do not worry! Just have a beer to get back at its normal speed.
+
 ![homer1_opt](https://user-images.githubusercontent.com/72262776/116545832-308c0700-a8f1-11eb-980b-cb011e406bb5.png) ![homer2png_opt](https://user-images.githubusercontent.com/72262776/116545835-31249d80-a8f1-11eb-8d7b-2721e0faedd2.png)
 
 ![homer3_opt](https://user-images.githubusercontent.com/72262776/116545838-31249d80-a8f1-11eb-8f01-552e31c5b7b9.png) ![homer4_opt](https://user-images.githubusercontent.com/72262776/116545839-31bd3400-a8f1-11eb-86b2-c84a9556c964.png)
